@@ -10,18 +10,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({
 }) => {
     const { modal } = useModal()
 
-
-    const Modal = () => {
-        if (modal) {
-            return modal
-        }
-        return null
-    }
-
     return (
         <>
             <Alert />
-            <AnimatePresence>{Modal()}</AnimatePresence>
+            <AnimatePresence>{modal}</AnimatePresence>
             <div
                 className={clsx(
                     'fixed inset-0 flex flex-row bg-g94 overflow-y-scroll px-0',
@@ -38,7 +30,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({
                         transition={{ ease: 'easeOut', duration: 0.2 }}
                     >
                         <div
-                            className='flex flex-col gap-[50px] w-full px-[70px] pt-[130px] pb-[33svh] max-tablet:px-[30px] max-mobile-h:px-[15px]'
+                            className='flex flex-col gap-[50px] w-full max-w-[1240px] px-[120px] pt-[130px] pb-[33svh] max-tablet:px-[30px] max-mobile-h:px-[15px]'
                         >
                             {children}
                         </div>
