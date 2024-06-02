@@ -1,7 +1,7 @@
 
 export const updateEmployeeSalary = async (id: string, salary: number) => {
     const response = await fetch(`/api/employees/${id}`, {
-        method: 'PATCH',
+        method: 'POST',
         body: JSON.stringify({ salary }),
         headers: {
             'Content-Type': 'application/json',

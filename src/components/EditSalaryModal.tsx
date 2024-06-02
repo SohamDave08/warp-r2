@@ -27,6 +27,13 @@ export const EditSalaryModal: React.FC<{
             })
             closeModal()
         },
+        onError: () => {
+            pushAlert({
+                type: AlertType.Error,
+                message: 'Error updating Salary',
+            })
+            closeModal()
+        }
     })
 
 

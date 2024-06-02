@@ -11,11 +11,7 @@ import { createClient } from "@/utils/supabase";
 import useEmployeeSalary from "@/hooks/useEmployeeSalary";
 import { EmployeeSettingsTab } from "@/components/EmployeeSettingsTab";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home({ salary, id }: { salary: number, id: string }) {
-  const { showModal } = useModal();
-
   useEmployeeSalary({ employeeId: id, initialData: salary })
 
   return (
