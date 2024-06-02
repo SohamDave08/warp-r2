@@ -27,8 +27,8 @@ export default function Home({ salary, id }: { salary: number, id: string }) {
             <Image
               src={'https://warp-documents-public.s3.amazonaws.com/google-oauth2%7C100405129643874851679/images/34cf609e-7b77-4b33-b81c-c38d661a4761.webp'}
               alt={'Khal'}
-              fill
-              style={{ objectFit: 'cover' }}
+              width={100}
+              height={200}
             />
           </div>
           <div className='flex items-center gap-[30px] w-full'>
@@ -44,7 +44,9 @@ export default function Home({ salary, id }: { salary: number, id: string }) {
             </div>
           </div>
         </div>
-        <TabBar tabs={["Settings"]}>
+        <TabBar tabs={["Overview", "Taxes", "Settings"]}>
+          <h1>Overview</h1>
+          <h1>Taxes</h1>
           <EmployeeSettingsTab employeeId={id} />
         </TabBar>
       </Layout>
