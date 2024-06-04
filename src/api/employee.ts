@@ -14,7 +14,7 @@ export const updateEmployeeSalary = async (id: string, salary: number) => {
 }
 
 export const fetchEmployeeSalary = async (id: string): Promise<number> => {
-    const response = await fetch(`/api/employee/${id}/salary`)
+    const response = await fetch(`/api/employee/${id}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch employee salary')
