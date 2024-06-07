@@ -13,7 +13,14 @@ import { EmployeeSettingsTab } from "@/components/EmployeeSettingsTab";
 
 export default function Home({ salary, id }: { salary: number, id: string }) {
   useEmployeeSalary({ employeeId: id, initialData: salary })
-
+  // const reloadData = (flag: boolean) => {
+  //   if(flag)
+  //     return 0;
+  //   else
+  //     return 10*60
+  // }
+  // const res = await fetch(`...`, {next: {revalidate: reloadData(true)}});
+  // const data = await res.json();
   return (
     <>
       <title>Warp Interview</title>

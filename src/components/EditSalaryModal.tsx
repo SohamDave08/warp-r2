@@ -1,26 +1,28 @@
 import useAlerts from "@/hooks/useAlerts"
 import useModal from "@/hooks/useModal"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useFormState } from "react-dom"
 import { AlertType } from "./Alert"
 import Modal, { ModalSize } from "./Modal"
 import Input from "./Input"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import BigButton from "./BigButton"
 import { updateEmployeeSalary } from "@/api/employee"
+import {employeeQueryKey} from "@/hooks/useEmployeeSalary"
 
+interface EditSalaryModalProps {
+    salary: number;
+}
 
-
-
-export const EditSalaryModal: React.FC<{
-}> = () => {
+export const EditSalaryModal: React.FC<EditSalaryModalProps> = ({salary}) => {
     const { closeModal } = useModal()
     const { pushAlert } = useAlerts()
-    const [newSalary, setNewSalary] = useState<number>(0)
-
+    const [newSalary, setNewSalary] = useState<number>(salary)
+    const queryClient = useQueryClient()
     const salaryMutation = useMutation({
         mutationFn: () => updateEmployeeSalary('1', newSalary),
         onSuccess: () => {
+            queryClient.invalidateQueries(employeeQueryKey('1'));
             pushAlert({
                 type: AlertType.Confirmation,
                 message: `Pay settings updated`,

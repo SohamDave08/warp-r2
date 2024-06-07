@@ -19,7 +19,11 @@ import useEmployeeSalary from "@/hooks/useEmployeeSalary"
 export const EmployeeSettingsTab: React.FC<{ employeeId: string }> = ({ employeeId }) => {
     const { showModal } = useModal()
     const { data: salary, isLoading } = useEmployeeSalary({ employeeId })
-
+    const handleEdit = () => {
+        if (salary !== undefined) {
+            showModal(<EditSalaryModal salary={salary} />);
+        }
+    };
     return (
         <Block>
             <Block.Header title="Base Pay" />
@@ -30,7 +34,7 @@ export const EmployeeSettingsTab: React.FC<{ employeeId: string }> = ({ employee
                         value={salary?.toFixed(2)}
                         isLoading={!salary || isLoading}
                         editable={true}
-                        onEdit={() => showModal(<EditSalaryModal />)}
+                        onEdit={handleEdit}
                     />
                 </div>
             </Block.Body>

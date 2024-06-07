@@ -1,11 +1,12 @@
+import next from "next"
 
 export const updateEmployeeSalary = async (id: string, salary: number) => {
     const response = await fetch(`/api/employees/${id}`, {
-        method: 'POST',
+        method: 'PATCH',
         body: JSON.stringify({ salary }),
         headers: {
             'Content-Type': 'application/json',
-        },
+        }
     })
 
     if (!response.ok) {
@@ -21,6 +22,6 @@ export const fetchEmployeeSalary = async (id: string): Promise<number> => {
     }
 
     const data = await response.json()
-
+    console.log(data);
     return data.salary
 }
